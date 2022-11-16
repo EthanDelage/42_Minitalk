@@ -6,7 +6,7 @@
 /*   By: edelage <edelage@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:12:29 by edelage           #+#    #+#             */
-/*   Updated: 2022/11/16 11:41:19 by edelage          ###   ########lyon.fr   */
+/*   Updated: 2022/11/16 16:59:28 by edelage          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk.h"
@@ -15,10 +15,10 @@
  * @brief		This function decompose a char (1 byte) to 8 bits
  *
  * @param c		Char to decompose
+ * @param pid	Process id of the server
  */
-void	decompose_char(char c)
+void	decompose_char(char c, pid_t pid)
 {
-	int		bit;
 	int		division;
 	size_t	index_bit;
 
@@ -27,20 +27,42 @@ void	decompose_char(char c)
 	while (index_bit != 0)
 	{
 		if ((c & division) != 0)
-			bit = 1;
+			kill(pid, SIGUSR2);
 		else
-			bit = 0;
-		printf("%d ", bit);
+			kill(pid, SIGUSR1);
 		division >>= 1;
 		index_bit--;
 	}
 }
 
-int	main(void)
+
+/**
+ * @brief 		This function call decompose_char for each char of str
+ *
+ * @param str	String to decompose
+ * @param pid	Process id of the server
+ */
+void	decompose_str(char *str, pid_t pid)
 {
-	for (int i = 0; i < 127; i++)
+	size_t index;
+
+	index = 0;
+	while (str[index])
 	{
-		decompose_char(i);
-		printf(": %i\n", i);
+		decompose_char(str[index], pid);
+		index++;
 	}
+	decompose_char(str[index], pid);
+}
+
+int	main(int argc, char **argv)
+{
+	pid_t	pid_server;
+
+	if (argc != 3)
+	{
+		write(2, "Error number argument\n", 22);
+		exit(EINVAL);
+	}
+	pid_server = ft_atoi(argv[1]);
 }

@@ -6,7 +6,7 @@
 #    By: edelage <edelage@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 16:54:01 by edelage           #+#    #+#              #
-#    Updated: 2022/11/16 12:26:28 by edelage          ###   ########lyon.fr    #
+#    Updated: 2022/11/16 16:45:09 by edelage          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ SRC_CLIENT =		ft_client.c
 
 SRC_SERV =			ft_server.c
 
-SRC =				ft_put.c
+SRC =				ft_put.c \
+					ft_atoi.c
 
 OBJ_CLIENT =		$(addprefix $(OBJ_DIR), $(SRC_CLIENT:.c=.o))
 
