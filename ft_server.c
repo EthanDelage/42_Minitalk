@@ -6,20 +6,14 @@
 /*   By: edelage <edelage@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:51:54 by edelage           #+#    #+#             */
-/*   Updated: 2022/11/15 17:13:19 by edelage          ###   ########lyon.fr   */
+/*   Updated: 2022/11/16 14:28:11 by edelage          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk.h"
 
-
-
 int	main(void)
 {
-	pid_t	process_id;
-
-	process_id = getpid();
-	while (1)
-	{
-		
-	}
+	write(1, "PID: ", 5);
+	ft_put_pid_fd(getpid(), 1);
+	write(1, "\n", 1);
 }

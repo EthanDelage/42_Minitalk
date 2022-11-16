@@ -6,7 +6,7 @@
 #    By: edelage <edelage@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 16:54:01 by edelage           #+#    #+#              #
-#    Updated: 2022/11/15 17:11:28 by edelage          ###   ########lyon.fr    #
+#    Updated: 2022/11/16 12:26:28 by edelage          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,13 @@ SRC_CLIENT =		ft_client.c
 
 SRC_SERV =			ft_server.c
 
+SRC =				ft_put.c
+
 OBJ_CLIENT =		$(addprefix $(OBJ_DIR), $(SRC_CLIENT:.c=.o))
 
 OBJ_SERV =			$(addprefix $(OBJ_DIR), $(SRC_SERV:.c=.o))
+
+OBJ =				$(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
 HEADER =			minitalk.h
 
@@ -54,11 +58,11 @@ MKDIR =				mkdir -p
 
 all:				$(SERV) $(CLIENT)
 
-$(SERV):			$(OBJ_DIR) $(OBJ_SERV)
-					$(CC) $(FLAGS) $(OBJ_SERV) -o $@
+$(SERV):			$(OBJ_DIR) $(OBJ) $(OBJ_SERV)
+					$(CC) $(FLAGS) $(OBJ_SERV) $(OBJ) -o $@
 
-$(CLIENT):			$(OBJ_DIR) $(OBJ_CLIENT)
-					$(CC) $(FLAGS) $(OBJ_CLIENT) -o $@
+$(CLIENT):			$(OBJ_DIR) $(OBJ) $(OBJ_CLIENT)
+					$(CC) $(FLAGS) $(OBJ_CLIENT) $(OBJ) -o $@
 
 $(OBJ_DIR)%.o:		%.c $(HEADER) Makefile
 					$(CC) $(FLAGS) -I. -c $< -o $@
@@ -67,7 +71,7 @@ $(OBJ_DIR):
 					$(MKDIR) $(OBJ_DIR)
 
 clean:
-					$(RM) $(OBJ_CLIENT) $(OBJ_SERV)
+					$(RM) $(OBJ) $(OBJ_CLIENT) $(OBJ_SERV)
 
 fclean:				clean
 					$(RM) $(CLIENT) $(SERV)
