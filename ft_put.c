@@ -6,7 +6,7 @@
 /*   By: edelage <edelage@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:18:54 by edelage           #+#    #+#             */
-/*   Updated: 2022/11/16 13:40:50 by edelage          ###   ########lyon.fr   */
+/*   Updated: 2022/11/17 22:13:44 by edelage          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk.h"
@@ -33,20 +33,20 @@ void	ft_put_str_fd(char *str, int fd)
 	write(fd, str, ft_strlen(str));
 }
 
-void	ft_put_pid_fd(pid_t process_id, int fd)
+void	ft_put_nb_fd(int nb, int fd)
 {
-	if (process_id == -2147483648)
+	if (nb == -2147483648)
 		write(fd, "-2147483648", 11);
-	else if (process_id < 0)
+	else if (nb < 0)
 	{
 		write(fd, "-", 1);
-		ft_put_pid_fd(-process_id, fd);
+		ft_put_nb_fd(-nb, fd);
 	}
-	else if (process_id > 9)
+	else if (nb > 9)
 	{
-		ft_put_pid_fd(process_id / 10, fd);
-		ft_put_char_fd(process_id % 10 + '0', fd);
+		ft_put_nb_fd(nb / 10, fd);
+		ft_put_char_fd(nb % 10 + '0', fd);
 	}
 	else
-		ft_put_char_fd(process_id % 10 + '0', fd);
+		ft_put_char_fd(nb % 10 + '0', fd);
 }

@@ -6,7 +6,7 @@
 /*   By: edelage <edelage@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:29:56 by edelage           #+#    #+#             */
-/*   Updated: 2022/11/16 14:28:07 by edelage          ###   ########lyon.fr   */
+/*   Updated: 2022/11/17 18:42:41 by edelage          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk.h"
@@ -65,4 +65,3 @@ int	ft_atoi(const char *str)
 	}
 	return (convert_number(str, sign, index));
 }
-
