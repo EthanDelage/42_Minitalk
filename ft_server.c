@@ -6,7 +6,7 @@
 /*   By: edelage <edelage@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:51:54 by edelage           #+#    #+#             */
-/*   Updated: 2022/11/16 17:04:29 by edelage          ###   ########lyon.fr   */
+/*   Updated: 2022/11/17 14:18:40 by edelage          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk.h"
@@ -27,4 +27,10 @@ void	print_pid(pid_t process_id, int fd)
 int	main(void)
 {
 	print_pid(getpid(), 1);
+	signal(SIGUSR1, sig_handler);
+	signal(SIGUSR2, sig_handler);
+	while (1)
+	{
+
+	}
 }
