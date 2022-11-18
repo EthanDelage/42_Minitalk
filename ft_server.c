@@ -6,10 +6,12 @@
 /*   By: edelage <edelage@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:51:54 by edelage           #+#    #+#             */
-/*   Updated: 2022/11/18 15:30:06 by edelage          ###   ########lyon.fr   */
+/*   Updated: 2022/11/18 16:39:27 by edelage          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk.h"
+
+static char	*g_str;
 
 void	print_pid(pid_t process_id, int fd)
 {
@@ -37,7 +39,13 @@ void	sig_handler(int signal, siginfo_t *info, void *context)
 	kill(info->si_pid, SIGUSR1);
 	if (bit_received == 8)
 	{
-		ft_put_char_fd(char_received, 1);
+		g_str = ft_join_char(g_str, char_received);
+		if (char_received == 0)
+		{
+			ft_put_str_fd(g_str, 1);
+			free(g_str);
+			g_str = NULL;
+		}
 		bit_received = 0;
 		char_received = 0;
 	}
@@ -48,6 +56,7 @@ int	main(void)
 	struct sigaction	s_sigaction;
 
 	print_pid(getpid(), 1);
+	g_str = NULL;
 	s_sigaction.sa_sigaction = &sig_handler;
 	s_sigaction.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &s_sigaction, NULL);

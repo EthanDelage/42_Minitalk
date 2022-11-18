@@ -6,7 +6,7 @@
 /*   By: edelage <edelage@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:12:29 by edelage           #+#    #+#             */
-/*   Updated: 2022/11/18 15:30:01 by edelage          ###   ########lyon.fr   */
+/*   Updated: 2022/11/18 16:40:25 by edelage          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk.h"
@@ -60,7 +60,7 @@ void	decompose_str(char *str, pid_t pid)
 		decompose_char(str[index], pid);
 		index++;
 	}
-	decompose_char(str[index], pid);
+	decompose_char(0, pid);
 }
 
 int	main(int argc, char **argv)
@@ -80,6 +80,5 @@ int	main(int argc, char **argv)
 		exit(EINVAL);
 	}
 	decompose_str(argv[2], pid_server);
-	usleep(1000);
 	return (0);
 }

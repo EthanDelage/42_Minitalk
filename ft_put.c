@@ -6,7 +6,7 @@
 /*   By: edelage <edelage@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:18:54 by edelage           #+#    #+#             */
-/*   Updated: 2022/11/17 22:13:44 by edelage          ###   ########lyon.fr   */
+/*   Updated: 2022/11/18 16:21:24 by edelage          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk.h"
@@ -16,6 +16,8 @@ size_t	ft_strlen(char *str)
 	size_t	count;
 
 	count = 0;
+	if (str == NULL)
+		return (0);
 	while (str[count])
 		count++;
 	return (count);
