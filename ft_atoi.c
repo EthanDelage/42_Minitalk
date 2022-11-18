@@ -6,7 +6,7 @@
 /*   By: edelage <edelage@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:29:56 by edelage           #+#    #+#             */
-/*   Updated: 2022/11/17 18:42:41 by edelage          ###   ########lyon.fr   */
+/*   Updated: 2022/11/19 00:20:47 by edelage          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk.h"
@@ -50,11 +50,9 @@ int	ft_atoi(const char *str)
 {
 	int		index;
 	int		sign;
-	size_t	len_nb;
 
 	index = 0;
 	sign = 1;
-	len_nb = 0;
 	while (ft_isspace(str[index]))
 		index++;
 	if (str[index] == '+' || str[index] == '-')

@@ -6,7 +6,7 @@
 #    By: edelage <edelage@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 16:54:01 by edelage           #+#    #+#              #
-#    Updated: 2022/11/18 23:08:41 by edelage          ###   ########lyon.fr    #
+#    Updated: 2022/11/19 00:43:45 by edelage          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ MKDIR =				mkdir -p
 #	Rules
 # ***********************
 
-all:				$(NAME)
+all:				$(SERV) $(CLIENT)
 
 $(NAME):			$(SERV) $(CLIENT)
 
