@@ -6,7 +6,7 @@
 /*   By: edelage <edelage@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:51:54 by edelage           #+#    #+#             */
-/*   Updated: 2022/11/17 22:12:26 by edelage          ###   ########lyon.fr   */
+/*   Updated: 2022/11/18 15:30:06 by edelage          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk.h"
@@ -33,6 +33,7 @@ void	sig_handler(int signal, siginfo_t *info, void *context)
 	char_received <<= 1;
 	if (signal == SIGUSR2)
 		char_received += 1;
+	usleep(25);
 	kill(info->si_pid, SIGUSR1);
 	if (bit_received == 8)
 	{

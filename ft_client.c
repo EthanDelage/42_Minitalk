@@ -6,7 +6,7 @@
 /*   By: edelage <edelage@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:12:29 by edelage           #+#    #+#             */
-/*   Updated: 2022/11/17 23:52:56 by edelage          ###   ########lyon.fr   */
+/*   Updated: 2022/11/18 15:30:01 by edelage          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk.h"
@@ -34,12 +34,13 @@ void	decompose_char(char c, pid_t pid)
 	division = 0b10000000;
 	while (division != 0)
 	{
-		usleep(5000);
+		usleep(25);
 		if ((c & division) != 0)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
 		division >>= 1;
+		pause();
 	}
 }
 
