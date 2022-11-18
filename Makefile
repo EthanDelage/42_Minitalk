@@ -6,7 +6,7 @@
 #    By: edelage <edelage@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 16:54:01 by edelage           #+#    #+#              #
-#    Updated: 2022/11/16 16:45:09 by edelage          ###   ########lyon.fr    #
+#    Updated: 2022/11/18 15:13:57 by edelage          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,8 @@ CLIENT =			client
 
 SERV =				server
 
+NAME =				minitalk
+
 # ***********************
 #	Compilations
 # ***********************
@@ -57,7 +59,9 @@ MKDIR =				mkdir -p
 #	Rules
 # ***********************
 
-all:				$(SERV) $(CLIENT)
+all:				$(NAME)
+
+$(NAME):			$(SERV) $(CLIENT)
 
 $(SERV):			$(OBJ_DIR) $(OBJ) $(OBJ_SERV)
 					$(CC) $(FLAGS) $(OBJ_SERV) $(OBJ) -o $@
