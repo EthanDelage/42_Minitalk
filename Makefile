@@ -61,12 +61,14 @@ MKDIR =				mkdir -p
 
 all:				$(NAME)
 
-$(NAME):			$(SERV) $(CLIENT)
+$(NAME):			
+					$(MAKE) $(SERV)
+					$(MAKE) $(CLIENT)
 
-$(SERV):			$(OBJ_DIR) $(OBJ) $(OBJ_SERV)
+$(SERV):			$(OBJ_DIR) $(OBJ_SERV) $(OBJ)
 					$(CC) $(FLAGS) $(OBJ_SERV) $(OBJ) -o $@
 
-$(CLIENT):			$(OBJ_DIR) $(OBJ) $(OBJ_CLIENT)
+$(CLIENT):			$(OBJ_DIR) $(OBJ_CLIENT)
 					$(CC) $(FLAGS) $(OBJ_CLIENT) $(OBJ) -o $@
 
 $(OBJ_DIR)%.o:		%.c $(HEADER) Makefile
